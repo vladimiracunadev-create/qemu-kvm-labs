@@ -17,6 +17,10 @@ Fecha: 2026-09-08
 | Catálogo, estructura y XML | OK, 12 labs y XML parseable |
 | Sintaxis Bash | OK, Git Bash validó todos los scripts con bash -n |
 | Secretos y artefactos grandes | OK, revisión local sin imágenes VM versionadas |
+| GitHub Actions · CI | OK, run 34259078930 sobre d4438f1 |
+| GitHub Actions · Markdown | OK, run 34259078884 sobre d4438f1 |
+| GitHub Actions · Pages | OK, run 34259078837 sobre d4438f1 |
+| GitHub Pages pública | OK, HTTP 200 y título QEMU KVM Labs |
 | VM KVM, SSH, redes y guest agent | Condicionado: requiere Linux con /dev/kvm |
 | Live migration | Condicionado: requiere dos hosts compatibles |
 
