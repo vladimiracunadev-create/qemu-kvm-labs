@@ -11,7 +11,7 @@ Fecha: 2026-09-08
 ## Resultados
 
 | Comprobación | Resultado |
-|---|---|
+| --- | --- |
 | Compilación Python | OK |
 | Tests unitarios | OK, 14 de 14 |
 | Catálogo, estructura y XML | OK, 12 labs y XML parseable |

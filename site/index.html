@@ -13,27 +13,45 @@
     <div class="hero-copy">
       <p class="eyebrow">VIRTUALIZACIÓN LINUX · DE CERO A PRODUCCIÓN</p>
       <h1>Aprende el hipervisor<br><span>desde dentro.</span></h1>
-      <p class="lede">Doce laboratorios ejecutables. VMs reales. Evidencia reproducible. Una CLI final para operar QEMU/KVM con libvirt.</p>
-      <div class="actions"><a class="primary" href="https://github.com/vladimiracunadev-create/qemu-kvm-labs#instalación">Empezar ahora</a><a href="#ruta">Ver la ruta</a></div>
+      <p class="lede">Entiende cómo se construye, arranca, conecta y gestiona una máquina virtual real. Doce laboratorios convierten QEMU, KVM y libvirt en un sistema que puedes observar y operar.</p>
+      <div class="actions"><a class="primary" href="https://github.com/vladimiracunadev-create/qemu-kvm-labs#instalación">Empezar ahora</a><a href="#que-es">Entender el proyecto</a></div>
     </div>
     <div class="terminal" aria-label="Ejemplo de terminal">
-      <div class="dots">● ● ●</div>
-      <pre><span>$</span> ./scripts/check-host.sh
-KVM device: accessible
-libvirt: connected
-
-<span>$</span> vm-manager start lab-vm
-Domain lab-vm started
-
-<span>$</span> ./scripts/verify.sh lab-vm
-state: running
-guest-agent: responding</pre>
+      <div class="dots">FLUJO QUE EJECUTARÁS</div>
+      <pre><span>01</span> comprobar CPU y /dev/kvm
+<span>02</span> crear disco qcow2
+<span>03</span> definir hardware virtual
+<span>04</span> arrancar Ubuntu
+<span>05</span> verificar por SSH y agente</pre>
     </div>
   </header>
   <main>
-    <section class="metrics"><div><strong>12</strong><span>laboratorios</span></div><div><strong>100%</strong><span>local-first</span></div><div><strong>0</strong><span>resultados simulados</span></div></section>
+    <section class="metrics"><div><strong>12</strong><span>laboratorios ejecutables</span></div><div><strong>1</strong><span>VM Ubuntu principal</span></div><div><strong>7</strong><span>operaciones en la CLI</span></div></section>
+    <section id="que-es" class="intro">
+      <div><p class="eyebrow">PRIMERO, EL MODELO MENTAL</p><h2>QEMU construye el ordenador. KVM acelera su CPU. Libvirt lo administra.</h2></div>
+      <div class="intro-copy"><p>Una máquina virtual es un ordenador definido por software: recibe CPU, memoria, disco, red y firmware propios, y arranca su propio sistema operativo. Este repositorio te deja ver y controlar cada capa.</p><p>Fue creado para cubrir el espacio entre instalar un paquete y comprender una plataforma de virtualización. Cada concepto produce un recurso real y evidencia consultada desde el host o el guest.</p></div>
+    </section>
+    <section class="layers" aria-label="Capas de virtualización">
+      <article><b>01 · QEMU</b><h3>Hardware virtual</h3><p>Presenta la máquina q35, discos, red Virtio, firmware y consola al sistema invitado.</p></article>
+      <article><b>02 · KVM</b><h3>Aceleración</h3><p>Usa el kernel Linux y las extensiones de la CPU para ejecutar el guest con rendimiento cercano al nativo.</p></article>
+      <article><b>03 · LIBVIRT</b><h3>Ciclo de vida</h3><p>Conserva la definición y coordina dominios, redes, snapshots, recursos y migración.</p></article>
+    </section>
+    <section class="machine">
+      <p class="eyebrow">QUÉ ESTÁS LEVANTANDO</p><h2>Un guest Ubuntu completo dentro de tu host.</h2>
+      <div class="machine-map">
+        <div class="host"><small>HOST LINUX / WSL2</small><div class="libvirt"><small>LIBVIRT</small><div class="qemu"><small>QEMU + KVM</small><div class="chips"><span>2 vCPU</span><span>2 GiB RAM</span><span>qcow2</span><span>Virtio NIC</span><span>UEFI</span><span>SPICE</span></div><div class="guest"><strong>Ubuntu 24.04 guest</strong><span>cloud-init · SSH · QEMU Guest Agent</span></div></div></div></div>
+      </div>
+      <p class="caption">La configuración predeterminada crea un overlay reutilizable, conecta la VM a NAT y mantiene la consola en loopback. El host incompatible se detiene con una causa concreta.</p>
+    </section>
+    <section class="manage">
+      <div><p class="eyebrow">QUÉ GESTIONAS</p><h2>Todo el ciclo de vida de una VM local.</h2></div>
+      <div class="ops"><span>Crear</span><span>Listar</span><span>Arrancar</span><span>Detener</span><span>Clonar</span><span>Snapshot</span><span>Eliminar</span></div>
+      <div class="usecases"><article><h3>Aprendizaje</h3><p>Relaciona cada comando con CPU, memoria, almacenamiento, firmware o red.</p></article><article><h3>Laboratorio</h3><p>Prueba kernels, imágenes y servicios en entornos aislados y reproducibles.</p></article><article><h3>Plataforma</h3><p>Comprende la base técnica de homelabs, nubes privadas y orquestadores.</p></article></div>
+    </section>
     <section id="ruta"><p class="eyebrow">RUTA PROGRESIVA</p><h2>Del primer bit de virtualización a la migración en vivo.</h2><div class="grid" id="labs"></div></section>
     <section class="final"><p class="eyebrow">PROYECTO FINAL</p><h2>vm-manager</h2><p>Crea, lista, arranca, detiene, clona, snapshot y elimina máquinas reales mediante libvirt/QEMU-KVM.</p><code>vm-manager create demo --base-image ubuntu.qcow2</code></section>
+    <section class="faq"><p class="eyebrow">PREGUNTAS CLAVE</p><h2>Antes de ejecutar.</h2><details open><summary>¿Necesito Linux?</summary><p>Los labs completos usan KVM y requieren Linux. En Windows la ruta es WSL2 cuando expone /dev/kvm. macOS puede ejecutar los labs de discos y arranque con TCG.</p></details><details><summary>¿Esto crea contenedores?</summary><p>Crea máquinas virtuales con su propio kernel. Los contenedores comparten el kernel del host.</p></details><details><summary>¿Necesito una cuenta cloud?</summary><p>No. El recorrido principal es local. La migración necesita un segundo host que tú controles.</p></details><details><summary>¿Cómo sé que funcionó?</summary><p>Las verificaciones consultan qemu-img, libvirt, el guest agent y SSH. La evidencia queda en archivos locales; no depende de mensajes de éxito prefabricados.</p></details>
+    </section>
   </main>
   <footer>Apache-2.0 · QEMU KVM Labs · 2026</footer>
   <script src="app.js"></script>
