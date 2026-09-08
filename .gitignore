@@ -16,4 +16,3 @@ images/*.iso
 .env
 secrets/
 reports/generated/
-.repo/
