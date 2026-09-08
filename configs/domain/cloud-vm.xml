@@ -1,0 +1,19 @@
+<domain type="kvm">
+  <name>lab-vm</name>
+  <memory unit="MiB">2048</memory>
+  <vcpu placement="static">2</vcpu>
+  <os firmware="efi"><type arch="x86_64" machine="q35">hvm</type></os>
+  <features><acpi/><apic/></features>
+  <cpu mode="host-passthrough" check="none"/>
+  <devices>
+    <disk type="file" device="disk">
+      <driver name="qemu" type="qcow2" cache="none"/>
+      <source file="/REPLACE/WITH/state/disks/lab-vm.qcow2"/>
+      <target dev="vda" bus="virtio"/>
+    </disk>
+    <interface type="network"><source network="default"/><model type="virtio"/></interface>
+    <channel type="unix"><target type="virtio" name="org.qemu.guest_agent.0"/></channel>
+    <graphics type="spice" autoport="yes" listen="127.0.0.1"/>
+    <console type="pty"/>
+  </devices>
+</domain>

@@ -1,0 +1,15 @@
+#cloud-config
+hostname: __HOSTNAME__
+manage_etc_hosts: true
+users:
+  - name: lab
+    groups: [adm, sudo]
+    shell: /bin/bash
+    sudo: ALL=(ALL) NOPASSWD:ALL
+    ssh_authorized_keys:
+      - __SSH_PUBLIC_KEY__
+packages:
+  - qemu-guest-agent
+runcmd:
+  - [systemctl, enable, --now, qemu-guest-agent]
+  - [sh, -c, "printf 'qemu-kvm-labs ready\n' >/var/tmp/qemu-kvm-labs-ready"]

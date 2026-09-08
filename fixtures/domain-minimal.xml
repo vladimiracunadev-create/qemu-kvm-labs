@@ -1,0 +1,7 @@
+<domain type="kvm">
+  <name>fixture-vm</name>
+  <memory unit="MiB">512</memory>
+  <vcpu>1</vcpu>
+  <os><type arch="x86_64">hvm</type></os>
+  <devices><emulator>/usr/bin/qemu-system-x86_64</emulator></devices>
+</domain>

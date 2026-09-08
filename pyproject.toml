@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "qemu-kvm-labs"
+version = "1.0.0"
+description = "Laboratorios reproducibles de virtualización Linux real con QEMU, KVM y libvirt"
+readme = "README.md"
+requires-python = ">=3.11"
+license = "Apache-2.0"
+authors = [{ name = "Vladimir Acuña" }]
+keywords = ["qemu", "kvm", "libvirt", "virtualization", "labs"]
+
+[project.scripts]
+vm-manager = "qemu_kvm_labs.vm_manager:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+addopts = "-q"
+testpaths = ["tests"]

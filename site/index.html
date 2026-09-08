@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Doce laboratorios reales de QEMU, KVM y libvirt con un gestor de VMs reproducible.">
+  <title>QEMU KVM Labs</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="hero">
+    <nav><a class="brand" href="#">QEMU KVM LABS</a><a href="https://github.com/vladimiracunadev-create/qemu-kvm-labs">GitHub ↗</a></nav>
+    <div class="hero-copy">
+      <p class="eyebrow">VIRTUALIZACIÓN LINUX · DE CERO A PRODUCCIÓN</p>
+      <h1>Aprende el hipervisor<br><span>desde dentro.</span></h1>
+      <p class="lede">Doce laboratorios ejecutables. VMs reales. Evidencia reproducible. Una CLI final para operar QEMU/KVM con libvirt.</p>
+      <div class="actions"><a class="primary" href="https://github.com/vladimiracunadev-create/qemu-kvm-labs#instalación">Empezar ahora</a><a href="#ruta">Ver la ruta</a></div>
+    </div>
+    <div class="terminal" aria-label="Ejemplo de terminal">
+      <div class="dots">● ● ●</div>
+      <pre><span>$</span> ./scripts/check-host.sh
+KVM device: accessible
+libvirt: connected
+
+<span>$</span> vm-manager start lab-vm
+Domain lab-vm started
+
+<span>$</span> ./scripts/verify.sh lab-vm
+state: running
+guest-agent: responding</pre>
+    </div>
+  </header>
+  <main>
+    <section class="metrics"><div><strong>12</strong><span>laboratorios</span></div><div><strong>100%</strong><span>local-first</span></div><div><strong>0</strong><span>resultados simulados</span></div></section>
+    <section id="ruta"><p class="eyebrow">RUTA PROGRESIVA</p><h2>Del primer bit de virtualización a la migración en vivo.</h2><div class="grid" id="labs"></div></section>
+    <section class="final"><p class="eyebrow">PROYECTO FINAL</p><h2>vm-manager</h2><p>Crea, lista, arranca, detiene, clona, snapshot y elimina máquinas reales mediante libvirt/QEMU-KVM.</p><code>vm-manager create demo --base-image ubuntu.qcow2</code></section>
+  </main>
+  <footer>Apache-2.0 · QEMU KVM Labs · 2026</footer>
+  <script src="app.js"></script>
+</body>
+</html>

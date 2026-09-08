@@ -1,0 +1,19 @@
+{
+  "schemaVersion": "1.0",
+  "project": "qemu-kvm-labs",
+  "version": "1.0.0",
+  "labs": [
+    {"id":"01","name":"host-kvm","path":"labs/01-host-kvm","level":"inicial","requires":"Linux + CPU vmx/svm + /dev/kvm"},
+    {"id":"02","name":"disk-images","path":"labs/02-disk-images","level":"inicial","requires":"qemu-img"},
+    {"id":"03","name":"boot-media","path":"labs/03-boot-media","level":"inicial","requires":"QEMU; KVM opcional"},
+    {"id":"04","name":"cloud-init-ssh","path":"labs/04-cloud-init-ssh","level":"intermedio","requires":"KVM + libvirt + cloud-localds"},
+    {"id":"05","name":"networking","path":"labs/05-networking","level":"intermedio","requires":"libvirt; root para bridge/TAP"},
+    {"id":"06","name":"snapshots-clones","path":"labs/06-snapshots-clones","level":"intermedio","requires":"VM administrada"},
+    {"id":"07","name":"virtio","path":"labs/07-virtio","level":"intermedio","requires":"VM administrada"},
+    {"id":"08","name":"resources","path":"labs/08-resources","level":"avanzado","requires":"KVM + VM administrada"},
+    {"id":"09","name":"guest-agent","path":"labs/09-guest-agent","level":"avanzado","requires":"qemu-guest-agent en guest"},
+    {"id":"10","name":"xml-uefi-console","path":"labs/10-xml-uefi-console","level":"avanzado","requires":"libvirt + OVMF + SPICE/VNC"},
+    {"id":"11","name":"failure-injection","path":"labs/11-failure-injection","level":"profesional","requires":"VM desechable administrada"},
+    {"id":"12","name":"migration-vm-manager","path":"labs/12-migration-vm-manager","level":"profesional","requires":"dos hosts compatibles para migración"}
+  ]
+}

@@ -1,0 +1,33 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  PYTHONPATH: src
+
+jobs:
+  validate:
+    name: Tests and contracts
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
+      - name: Python unit tests
+        run: python3 -m unittest discover -s tests -v
+      - name: Repository contracts
+        run: python3 scripts/validate-repo.py
+      - name: Bash syntax
+        run: bash -n scripts/*.sh scripts/lib/*.sh labs/*/*.sh configs/networks/*.sh examples/*.sh
+      - name: Detect committed VM artifacts
+        run: |
+          if find . -type f \( -name '*.qcow2' -o -name '*.raw' -o -name '*.img' -o -name '*.iso' \) -print -quit | grep -q .; then
+            echo 'VM disks or images must not be committed.'
+            exit 1
+          fi
